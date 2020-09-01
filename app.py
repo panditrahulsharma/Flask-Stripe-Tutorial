@@ -13,8 +13,8 @@ from flask import Flask, render_template, url_for, request, abort
 import stripe
 
 app = Flask(__name__)
-app.config['STRIPE_PUBLIC_KEY'] = 'pk_test_51HClRcBZLa0Pd5Bp86JY1VjCsuW19Z8q3UCC5UKxbZLOTZPPFdmVQohgBBfsqzI7uuPxnubjKpOaSo7NmyRvPW1l00RStYB5Me'
-app.config['STRIPE_SECRET_KEY'] = 'sk_test_51HClRcBZLa0Pd5BpTtA5XAwS6tcVijvdOXSpwne3C2spqGhQDjCL12U8eh8VXnL2SRal2t7KBIEKmCc4wGop9LLZ00RQo7xHDA'
+app.config['STRIPE_PUBLIC_KEY'] = 'pk_test_51HClRcBZLa0Pd5Bp86JY1VllljCsuW19Z8q3UCC5UKxbZLOTZPPFdmVQohgBBfsqzI7uuPxnubjKpOaSo7NmyRvPW1l00RStYB5Me'
+app.config['STRIPE_SECRET_KEY'] = 'sk_test_51HClRcBZLa0Pd5BpTtihiA5XAwS6tcVijvdOXSpwne3C2spqGhQDjCL12U8eh8VXnL2SRal2t7KBIEKmCc4wGop9LLZ00RQo7xHDA'
 
 stripe.api_key = app.config['STRIPE_SECRET_KEY']
 
