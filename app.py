@@ -24,12 +24,18 @@ def index():
 	return render_template('index.html')
 	
 
+# @app.route('/thanks')
+# def thanks():
+# 	return render_template('thanks.html')
+	
+
+
 @app.route('/SelectPlan',methods=['GET','POST'])
 def SelectPlan():
 	if request.method=='POST':
 		amount=request.form['amount']
-		month=request.form['month']
-		return render_template('form.html',amount=amount,month=month)
+		hours=request.form['hours']
+		return render_template('form.html',amount=amount,hours=hours)
 	else:
 		return render_template("index.html")
 	
