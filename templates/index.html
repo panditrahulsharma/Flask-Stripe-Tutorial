@@ -1,181 +1,199 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>stripe form</title>
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>checkout</title>
 
-	<script src="https://js.stripe.com/v3/"></script>
-<!--   <link href="../static/style.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-  <script src="../static/stripe.js"></script>
- -->
+
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+
 
 <style type="text/css">
-	/**
- * The CSS shown here will not be introduced in the Quickstart guide, but shows
- * how you can use CSS to style your Element's container.
- */
 
 .rahul{
-  width: 300px !important;
-border-radius: 4px;
-
-
+    background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
 }
 
-.StripeElement {
-  box-sizing: border-box;
-
-  height: 40px;
-
-  padding: 10px 12px;
-
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: white;
-
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
+	section.pricing {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
 }
 
-.StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+.pricing .card {
+  border: none;
+  border-radius: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
-.StripeElement--invalid {
-  border-color: #fa755a;
+.pricing hr {
+  margin: 1.5rem 0;
 }
 
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+.pricing .card-title {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
 }
+
+.pricing .card-price {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.pricing .card-price .period {
+  font-size: 0.8rem;
+}
+
+.pricing ul li {
+  margin-bottom: 1rem;
+}
+
+.pricing .text-muted {
+  opacity: 0.7;
+}
+
+.pricing .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  opacity: 0.7;
+  transition: all 0.2s;
+}
+
+/* Hover Effects on Card */
+
+@media (min-width: 992px) {
+  .pricing .card:hover {
+    margin-top: -.25rem;
+    margin-bottom: .25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+  }
+  .pricing .card:hover .btn {
+    opacity: 1;
+  }
+}
+
 </style>
 
 </head>
-<body>
-
-<!-- please not remove any id or values attribute in this form -->
-
-<form action="/charge" method="post" id="payment-form" class="rahul">
-
-<!-- General form -->
-      <label for="sel1">Select list (select one):</label>
-      <select class="form-control" id="sel1" name="amount">
-        <option value="1000">1000 rs</option>
-        <option value="2000">2000 rs</option>
-        <option value="3000">3000 rs</option>
-        <option value="4000">4000 rs</option>
-      </select>
-      <br>
+<body class="rahul">
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+<h2>Select Plan</h2>
+<section class="pricing py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Free Tier -->
 
 
-    <div class="form-group">
-      <label for="usr">Email:</label>
-      <input type="email" class="form-control" name="email" placeholder="email">
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+
+          <form action="/SelectPlan" method="POST">
+
+            <h5 class="card-title text-muted text-uppercase text-center">Starter</h5>
+            <h6 class="card-price text-center">₹1000<span class="period">/month</span></h6>
+
+            <input type="hidden" name="amount" value="1000">
+            <input type="hidden" name="month" value="1">
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+              <!-- <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span></li> -->
+                <li class="text-muted"></li>
+
+              <li class="text-muted"></li>
+                    <li class="text-muted"></li>
+
+              <li class="text-muted"></li>
+
+            </ul>
+            <button class="btn btn-block btn-primary text-uppercase">Button</button>
+            <!-- <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a> -->
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+
+          <form action="/SelectPlan" method="POST">
+
+            <h5 class="card-title text-muted text-uppercase text-center">Economy</h5>
+            <h6 class="card-price text-center">₹5000<span class="period">/month</span></h6>
+
+            <input type="hidden" name="amount" value="5000">
+            <input type="hidden" name="month" value="2">
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+              <!-- <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span></li> -->
+                <li class="text-muted"></li>
+
+              <li class="text-muted"></li>
+                    <li class="text-muted"></li>
+
+              <li class="text-muted"></li>
+
+            </ul>
+            <button class="btn btn-block btn-primary text-uppercase">Button</button>
+            <!-- <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a> -->
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+
+          <form action="/SelectPlan" method="POST">
+
+            <h5 class="card-title text-muted text-uppercase text-center">Deluxe</h5>
+            <h6 class="card-price text-center">₹10000<span class="period">/month</span></h6>
+
+            <input type="hidden" name="amount" value="10000">
+            <input type="hidden" name="month" value="2">
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>5GB Storage</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited Public Projects</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>Community Access</li>
+              <!-- <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span></li> -->
+                <li class="text-muted"></li>
+
+              <li class="text-muted"></li>
+                    <li class="text-muted"></li>
+
+              <li class="text-muted"></li>
+
+            </ul>
+            <button class="btn btn-block btn-primary text-uppercase">Button</button>
+            <!-- <a href="#" class="btn btn-block btn-primary text-uppercase">Button</a> -->
+            </form>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div class="form-group">
-      <label for="usr">Name:</label>
-      <input type="text" class="form-control" name="Nickname" placeholder="Nickname">
-    </div>
-<!-- end of general form -->
-
-<!-- stripe predefine element -->
-  <div class="form-row">
-    <label for="card-element" class="rahul">
-      Credit or debit card
-    </label>
-    <div id="card-element" class="rahul">
-      <!-- A Stripe Element will be inserted here. -->
-    </div><br>
-
-    <!-- Used to display form errors. -->
-    <div id="card-errors" role="alert"></div>
   </div>
-
-  <button>Submit Payment</button>
-
-<!-- stripe end -->
-
-</form>
-
-<script type="text/javascript">
-	// Create a Stripe client.
-var stripe = Stripe('pk_test_51HClRcBZLa0Pd5Bp86JY1VjCsuW19Z8q3UCC5UKxbZLOTZPPFdmVQohgBBfsqzI7uuPxnubjKpOaSo7NmyRvPW1l00RStYB5Me');
-
-// Create an instance of Elements.
-var elements = stripe.elements();
-
-// Custom styling can be passed to options when creating an Element.
-// (Note that this demo uses a wider set of styles than the guide below.)
-var style = {
-  base: {
-    color: '#32325d',
-    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-    fontSmoothing: 'antialiased',
-    fontSize: '16px',
-    '::placeholder': {
-      color: '#aab7c4'
-    }
-  },
-  invalid: {
-    color: '#fa755a',
-    iconColor: '#fa755a'
-  }
-};
-
-// Create an instance of the card Element.
-var card = elements.create('card', {style: style});
-
-// Add an instance of the card Element into the `card-element` <div>.
-card.mount('#card-element');
-
-// Handle real-time validation errors from the card Element.
-card.on('change', function(event) {
-  var displayError = document.getElementById('card-errors');
-  if (event.error) {
-    displayError.textContent = event.error.message;
-  } else {
-    displayError.textContent = '';
-  }
-});
-
-// Handle form submission.
-var form = document.getElementById('payment-form');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  stripe.createToken(card).then(function(result) {
-    if (result.error) {
-      // Inform the user if there was an error.
-      var errorElement = document.getElementById('card-errors');
-      errorElement.textContent = result.error.message;
-    } else {
-      // Send the token to your server.
-      stripeTokenHandler(result.token);
-    }
-  });
-});
-
-// Submit the form with the token ID.
-function stripeTokenHandler(token) {
-  // Insert the token ID into the form so it gets submitted to the server
-  var form = document.getElementById('payment-form');
-  var hiddenInput = document.createElement('input');
-  hiddenInput.setAttribute('type', 'hidden');
-  hiddenInput.setAttribute('name', 'stripeToken');
-  hiddenInput.setAttribute('value', token.id);
-  form.appendChild(hiddenInput);
-
-  // Submit the form
-  form.submit();
-}
-</script>
-
+</section>
 </body>
 </html>

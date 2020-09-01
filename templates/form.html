@@ -164,8 +164,8 @@ span.price {
 
 
 <!-- -------------------------------------------------------------------------------------------------------------------------- -->
-            <input type="hidden" name="amount" value="200">
-            <input type="hidden" class="form-control" name="email" placeholder="email" value="rahul@gmail.com">
+            <input type="hidden" name="amount" value="{{amount}}">
+            <!-- <input type="hidden" class="form-control" name="email" placeholder="email" value="rahul@gmail.com"> -->
 <!-- -------------------------------------------------------------------------------------------------------------------------- -->
 
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
@@ -236,10 +236,10 @@ span.price {
   <div class="col-25">
     <div class="container">
       <h4>Order Summary <span class="price" style="color:black"></span></h4>
-      <p><a href="#">Topup Amount</a> <span class="price">1 Hour</span></p>
-      <p><a href="#">Rate per hour</a> <span class="price">$5</span></p>
+      <p><a href="#">Topup Amount</a> <span class="price">{{month}} Month</span></p>
+      <p><a href="#">Rate per hour</a> <span class="price">₹ {{amount}}</span></p>
       <hr>
-      <p>Total <span class="price" style="color:black"><b>$5</b></span></p>
+      <p>Total <span class="price" style="color:black"><b>₹ {{amount}}</b></span></p>
     </div>
   </div>
 </div>

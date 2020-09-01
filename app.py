@@ -1,3 +1,5 @@
+#rahul pandit
+
 #verify account and save
 #https://www.youtube.com/watch?v=Y9EpPc19xjw
 
@@ -22,20 +24,31 @@ def index():
 	return render_template('index.html')
 	
 
+@app.route('/SelectPlan',methods=['GET','POST'])
+def SelectPlan():
+	if request.method=='POST':
+		amount=request.form['amount']
+		month=request.form['month']
+		return render_template('form.html',amount=amount,month=month)
+	else:
+		return render_template("index.html")
+	
+
+
 @app.route('/charge',methods=['GET','POST'])
 def charge():
 	if request.method=='POST':
-		# print('Data',request.form)
-		# print("------------------")
-		# print(request.form['stripeToken'])
+
+		email='rahul@metaorigins.com'
 
 		amount=int(request.form['amount'])
 
 		customer=stripe.Customer.create(
-			email=request.form['email'],
+			email=email,
 			name=request.form['Nickname'],
 			source=request.form['stripeToken'],
-		  description="Welcome in Cloutcube"
+		  description=request.form['address'],
+		  # address=request.form['address']
 		)
 
 		# `source` is obtained with Stripe.js; see https://stripe.com/docs/payments/accept-a-payment-charges#web-create-token
@@ -50,7 +63,7 @@ def charge():
 		print(charge)
 
 
-		return render_template('thanks.html')
+		return render_template('thanks.html',charge=charge)
 
 	return render_template('index.html')
 	
