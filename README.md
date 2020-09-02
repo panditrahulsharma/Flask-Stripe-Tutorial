@@ -34,4 +34,8 @@ except stripe.error.StripeError as e:
 except Exception as e:
   # Something else happened, completely unrelated to Stripe
   pass
+  
+
 ```
+<h1>use stripe default number</h1>
+https://stripe.com/docs/testing`
