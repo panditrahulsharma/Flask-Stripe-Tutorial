@@ -37,5 +37,5 @@ except Exception as e:
   
 
 ```
-<h1>use stripe default number</h1>
-https://stripe.com/docs/testing`
+<h3>Testing Learn about the different methods to test your integration before going live </h3>
+https://stripe.com/docs/testing
